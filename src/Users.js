@@ -14,6 +14,7 @@ function Users(){
                 <div>
                     <h2>{value.title}</h2>
                     <p>{value.body}</p>
+                    <button value={value.id}><Link  to={`Editar/${value.id}`} >Editar</Link></button>
                 </div>
                 );
                 setUsers(html);

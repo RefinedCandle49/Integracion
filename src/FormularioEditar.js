@@ -1,21 +1,29 @@
 import './App.css';
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import './App2.css'
 import './Revista.css'
 import {Form, Field} from 'react-final-form';
+import {useParams} from "react-router-dom";
 function Formulario(){
+
+    const {id} = useParams();
+    console.log(id)
+
+
+    const [user, setUser] = useState({ title: '', body: '' });
+
     const handlePost = (e) =>{
         // console.log("Esta es la función principal de mi formulario")
         console.log(e.txtTitle);
         console.log(e.txtFor);
-        fetch("https://jsonplaceholder.typicode.com/posts/1", {
+        fetch("https://jsonplaceholder.typicode.com/posts/" + id, {
             method: "PUT",
             body: JSON.stringify({
-                id: 1,
+                id: id,
                 title: e.txtTitle,
                 body: e.txtFor,
-                userId: 1
+                userId: id
             }),
             headers:{
                 "Content-type": "application/json; charset= UTF-8"
@@ -26,24 +34,44 @@ function Formulario(){
                 console.log(data)
             })
     }
-    return(
+
+    const handleGetUser = async () => {
+        fetch("https://jsonplaceholder.typicode.com/posts/" + id)
+            .then(res => res.json())
+            .then(data => {
+                setUser({
+                    title: data.title,
+                    body: data.body
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
+    }
+    useEffect(() => {
+        handleGetUser();
+    }, [id]);
+
+    return (
         <>
             <div className="App">
                 <header className="App-header">
-                    <h1>Este es mi formulario de edición de usuarios</h1>
+                    <h1>Este es mi formulario de registro de usuarios</h1>
                     <Form
                         onSubmit={handlePost}
-                        render={({handleSubmit})=>(
+                        render={({handleSubmit}) => (
                             <form onSubmit={handleSubmit}>
-                                <Field name="txtTitle" component="input" placeholder="Ingrese el título"></Field>
+                                <Field name="txtTitle" initialValue={user.title} component="input"
+                                       placeholder="Ingrese el título"></Field>
                                 <br/>
-                                <Field name="txtFor" component="input" placeholder="Ingrese el parametro"></Field>
+                                <Field name="txtFor" initialValue={user.body} component="input"
+                                       placeholder="Ingrese el parametro"></Field>
                                 <br/>
-                                <input type="submit" class="go" value="Actualizar"/>
+                                <input type="submit" className="go" value="Actualizar"/>
                             </form>
                         )}
                     />
-                    <Link class="go" to="/">Regresar</Link>
+                    <Link to="/" className="go">Regresar</Link>
                 </header>
 
             </div>
