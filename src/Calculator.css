@@ -30,6 +30,15 @@
     border-radius: 5px;
     border: none;
     padding: 22px;
-    color: white;
+    color: black;
     background-color: black;
+}
+
+label{
+    color: black;
+}
+
+input{
+    padding: 5px;
+    border-radius: 5px;
 }

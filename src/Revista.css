@@ -6,17 +6,18 @@
 }
 
 .go{
-    background-color: transparent;
-    color: rgb(35, 35, 246);
-    border: 1px rgb(35, 35, 246) solid;
+    background-color: white;
+    border: 1px rgb(255, 255, 255) solid;
     border-radius: 3px;
     padding: 10px;
     font-size: 20px;
     margin-top: 30px;
+    color: black;
+    margin: 5px;
 }
 
 .go:hover{
-    background-color: black;
+    background-color: #bebcbc;
     color: white;
 }
 
@@ -28,4 +29,8 @@
 
 img{
     border-radius: 10px;
+}
+
+a{
+    text-decoration: none;
 }
