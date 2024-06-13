@@ -61,13 +61,10 @@ function Formulario(){
                         onSubmit={handlePost}
                         render={({handleSubmit}) => (
                             <form onSubmit={handleSubmit}>
-                                <Field name="txtTitle" initialValue={user.title} component="input"
-                                       placeholder="Ingrese el título"></Field>
+                                <label htmlFor="">Título: {user.title}</label>
                                 <br/>
-                                <Field name="txtFor" initialValue={user.body} component="input"
-                                       placeholder="Ingrese el parametro"></Field>
+                                <label htmlFor="">Descripción: {user.body}</label>
                                 <br/>
-                                <input type="submit" className="go" value="Actualizar"/>
                             </form>
                         )}
                     />

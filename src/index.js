@@ -8,10 +8,11 @@ import Users from "./Users";
 import Formulario from "./Formulario";
 import reportWebVitals from './reportWebVitals';
 import FormularioEditar from "./FormularioEditar";
+import './../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 const router = createBrowserRouter([
     {
-        path: '/App',
+        path: '/abc',
         element: <App/>,
     },
     {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
     {
         path: '/Editar/:id',
         element: <FormularioEditar/>
-    }
+    },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

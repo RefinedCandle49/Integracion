@@ -22,6 +22,7 @@ function Formulario(){
         })
             .then(res=> res.json())
             .then(data => {
+                alert('Título: '+data.title+', Cuerpo: '+data.body+', ID: '+data.id);
                 console.log(data)
             })
     }
@@ -29,7 +30,7 @@ function Formulario(){
         <>
             <div className="App">
                 <header className="App-header">
-                    <h1>Este es mi formulario de registro de usuarios</h1>
+                    <h1>Agregar</h1>
                     <Form
                         onSubmit={handlePost}
                         render={({handleSubmit})=>(
@@ -42,7 +43,8 @@ function Formulario(){
                             </form>
                         )}
                     />
-                    <Link class="go" to="/">Ir a formulario</Link>
+                    <Link class="go" to="/">Volver</Link>
+
                 </header>
 
             </div>
